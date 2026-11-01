@@ -1,0 +1,560 @@
+@font-face {
+  font-family: Manrope;
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: Mono;
+  src: url("/fonts/dm-mono.woff2") format("woff2");
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+body {
+  margin: 0;
+  background: #131313;
+  color: #f5eeec;
+  font:
+    15px/1.6 Manrope,
+    Arial,
+    sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+:focus-visible {
+  outline: 3px solid #ed703b;
+  outline-offset: 5px;
+}
+.skip {
+  position: fixed;
+  z-index: 50;
+  top: -100px;
+  background: #f5eeec;
+  color: #131313;
+  padding: 20px;
+}
+.skip:focus {
+  top: 10px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 3vw;
+  border-bottom: 1px solid #ffffff33;
+}
+.brand {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.brand span {
+  font: 8px Mono;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  margin-left: 22px;
+}
+nav {
+  display: flex;
+  gap: 30px;
+  font: 10px Mono;
+}
+.observatory {
+  position: relative;
+  height: 920px;
+  min-height: 80vh;
+  max-height: 1100px;
+  padding: 30px 3vw;
+  overflow: hidden;
+}
+.stage-top {
+  display: flex;
+  justify-content: space-between;
+  font: 9px Mono;
+  letter-spacing: 0.08em;
+}
+.observatory h1 {
+  font-size: clamp(40px, 4.8vw, 75px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  margin: 55px 0 0;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+.observatory h1 em {
+  color: #ed703b;
+  font-family: Georgia;
+  font-weight: 400;
+}
+.observatory canvas {
+  display: block;
+  position: absolute;
+  inset: 30px 0 65px;
+  width: 100%;
+  height: calc(100% - 95px);
+}
+.stage-edge {
+  position: absolute;
+  top: 50%;
+  left: 3vw;
+  right: 3vw;
+  display: flex;
+  justify-content: space-between;
+  font: 8px Mono;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+.stage-edge span:last-child {
+  color: #ed956e;
+}
+.time-controls {
+  position: absolute;
+  bottom: 65px;
+  left: 3vw;
+  right: 3vw;
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  background: #131313e6;
+  border-top: 1px solid #ffffff44;
+  padding-top: 20px;
+}
+.time-controls button {
+  border: 1px solid #ffffff55;
+  background: none;
+  color: inherit;
+  font-size: 11px;
+  padding: 11px 15px;
+  white-space: nowrap;
+}
+.time-controls label {
+  flex: 1;
+  font: 10px Mono;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.time-controls output {
+  text-align: right;
+  color: #ed956e;
+}
+.time-controls input {
+  grid-column: 1/-1;
+  width: 100%;
+  height: 22px;
+  accent-color: #ed703b;
+}
+.stage-note {
+  position: absolute;
+  bottom: 22px;
+  left: 3vw;
+  font: 8px Mono;
+  color: #b9b0aa;
+  letter-spacing: 0.1em;
+}
+#controls {
+  padding: 65px 5vw;
+  background: #e8e2d7;
+  color: #252422;
+}
+.control-title {
+  display: flex;
+  align-items: center;
+  gap: 10vw;
+  border-bottom: 1px solid #25242255;
+  padding-bottom: 35px;
+}
+.control-title > span {
+  font: 10px Mono;
+}
+.control-title h2 {
+  font-size: clamp(44px, 5.5vw, 85px);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+  margin: 0;
+}
+.control-title em {
+  font-family: Georgia;
+}
+.presets {
+  display: flex;
+  gap: 25px;
+  margin-top: 30px;
+}
+.presets button {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #25242266;
+  padding: 8px 0;
+  font-size: 12px;
+  color: inherit;
+}
+.ranges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px 5vw;
+  margin: 35px 0;
+}
+.ranges label > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 12px;
+}
+.ranges output {
+  font: 12px Mono;
+}
+.ranges input {
+  display: block;
+  width: 100%;
+  height: 35px;
+  accent-color: #c24a1b;
+  margin-top: 10px;
+  cursor: ew-resize;
+}
+.simulate {
+  background: #252422;
+  color: #f5eeec;
+  border: 0;
+  padding: 18px 32px;
+  font-size: 14px;
+}
+.status {
+  font: 11px/1.6 Mono;
+  min-height: 32px;
+}
+.measurements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #25242255;
+  border-bottom: 1px solid #25242255;
+  padding: 30px 0;
+  margin: 30px 0;
+  gap: 30px;
+}
+.measurements span {
+  display: block;
+  font: 9px Mono;
+}
+.measurements strong {
+  display: block;
+  font: clamp(30px, 3.5vw, 55px) Mono;
+  letter-spacing: -3px;
+  font-weight: 400;
+  margin-top: 12px;
+}
+.measurements small {
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.archive {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9vw;
+  padding-top: 20px;
+}
+.archive > div > span {
+  font: 10px Mono;
+}
+.archive label {
+  font-size: 12px;
+  display: block;
+  margin-top: 20px;
+}
+.archive input {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #25242277;
+  background: none;
+  color: inherit;
+  padding: 12px 0;
+  font-size: 24px;
+}
+.archive button {
+  background: none;
+  color: inherit;
+  border: 1px solid #25242288;
+  padding: 12px 17px;
+  font-size: 11px;
+  margin: 14px 10px 8px 0;
+}
+.archive small {
+  display: block;
+  font: 10px/1.7 Mono;
+  max-width: 380px;
+}
+.archive > div + div {
+  padding-top: 20px;
+}
+.archive a {
+  display: block;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  font-size: 12px;
+}
+.archive details {
+  font-size: 12px;
+  margin-top: 18px;
+}
+.archive details button {
+  display: block;
+  border: 0;
+}
+.theory {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8vw;
+  padding: 90px 5vw;
+  align-items: center;
+}
+.clockwork {
+  height: 650px;
+  overflow: hidden;
+  clip-path: circle(48%);
+}
+.clockwork img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+.theory > div > span {
+  font: 9px Mono;
+  color: #b9b0aa;
+}
+.theory h2 {
+  font-size: clamp(55px, 5.5vw, 85px);
+  line-height: 1.04;
+  font-weight: 400;
+  letter-spacing: -4px;
+}
+.theory h2 em {
+  font-family: Georgia;
+  color: #ed956e;
+}
+.theory p {
+  font-size: 14px;
+  max-width: 400px;
+  color: #c4bcb7;
+}
+.constants {
+  display: flex;
+  gap: 20px;
+  font: 9px Mono;
+  margin-top: 35px;
+  border-top: 1px solid #ffffff44;
+  padding-top: 25px;
+}
+.constants b {
+  display: block;
+  font: 15px Mono;
+  margin-top: 10px;
+  font-weight: 400;
+}
+footer {
+  padding: 30px 3vw;
+  border-top: 1px solid #ffffff33;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 25px;
+  font-size: 11px;
+}
+footer strong {
+  font-size: 24px;
+  letter-spacing: -1px;
+  font-weight: 400;
+}
+footer small {
+  width: 100%;
+  color: #b9b0aa;
+  font-size: 10px;
+}
+footer button {
+  background: none;
+  border: 1px solid #ffffff66;
+  color: inherit;
+  padding: 10px;
+  margin-left: auto;
+}
+.reduced-motion * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media (max-width: 760px) {
+  header {
+    padding: 20px;
+  }
+  .brand {
+    font-size: 21px;
+  }
+  .brand span {
+    display: none;
+  }
+  nav {
+    font-size: 9px;
+    gap: 15px;
+  }
+  nav > a:last-child {
+    display: none;
+  }
+  .observatory {
+    height: 750px;
+    padding: 25px 20px;
+    min-height: 0;
+  }
+  .stage-top {
+    font-size: 8px;
+  }
+  .stage-top span:last-child {
+    display: none;
+  }
+  .observatory h1 {
+    font-size: clamp(35px, 7.5vw, 55px);
+    margin-top: 35px;
+  }
+  .observatory canvas {
+    inset: 100px 0 110px;
+    height: calc(100% - 210px);
+  }
+  .stage-edge {
+    top: auto;
+    bottom: 155px;
+    left: 20px;
+    right: 20px;
+    font-size: 7px;
+  }
+  .time-controls {
+    left: 20px;
+    right: 20px;
+    bottom: 55px;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 15px;
+  }
+  .time-controls label {
+    min-width: 45%;
+    order: 3;
+    flex-basis: 100%;
+    gap: 2px;
+  }
+  .time-controls button {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+  .stage-note {
+    left: 20px;
+    bottom: 20px;
+    font-size: 7px;
+  }
+  #controls {
+    padding: 45px 22px;
+  }
+  .control-title {
+    display: block;
+  }
+  .control-title h2 {
+    font-size: 48px;
+    margin-top: 25px;
+  }
+  .ranges {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .ranges label > span {
+    display: block;
+    font-size: 11px;
+  }
+  .ranges output {
+    display: block;
+    margin-top: 8px;
+  }
+  .presets {
+    gap: 18px;
+  }
+  .presets button {
+    font-size: 10px;
+  }
+  .measurements {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .measurements > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .measurements strong {
+    font-size: 31px;
+    margin: 0;
+    letter-spacing: -1.5px;
+  }
+  .measurements span {
+    font-size: 8px;
+    max-width: 140px;
+  }
+  .archive {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .theory {
+    grid-template-columns: 1fr;
+    padding: 60px 25px;
+    gap: 25px;
+  }
+  .clockwork {
+    height: 360px;
+  }
+  .theory h2 {
+    font-size: 65px;
+  }
+  .theory p {
+    max-width: none;
+  }
+  .constants {
+    gap: 30px;
+  }
+  footer {
+    padding: 25px;
+  }
+  footer button {
+    margin: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

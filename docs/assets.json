@@ -1,0 +1,19 @@
+{
+  "assets": [
+    {
+      "path": "public/media/clockwork.webp",
+      "source": "https://www.pexels.com/photo/gears-in-clock-mechanism-8327684/",
+      "download_url": "https://images.pexels.com/photos/8327684/pexels-photo-8327684.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "author": "Tima Miroshnichenko",
+      "license": "Pexels License",
+      "license_url": "https://www.pexels.com/license/",
+      "verified_at": "2026-11-01T02:55:36.719480+00:00",
+      "sha256": "63a7b4da09c249df0d59cb2553b81e60df5e60e16650b20eb6d73f8999c97ade",
+      "source_sha256": "b780956a9c349fddac8f71704953bc38d5be6102b9421f086a8cf357e4c38010",
+      "bytes": 62090,
+      "width": 1400,
+      "height": 934,
+      "changes": "EXIF orientation applied; RGB; resized within 1400x1800 without crop; WebP quality 84; EXIF removed."
+    }
+  ]
+}
