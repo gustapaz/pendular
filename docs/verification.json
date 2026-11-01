@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-01",
+  "automated_tests": 20,
+  "tests": "passed",
+  "typecheck": "passed",
+  "format": "passed",
+  "production_build": "passed",
+  "local_responsive_widths": [
+    375,
+    753
+  ],
+  "horizontal_overflow": "none after fixes",
+  "public_smoke": "passed",
+  "public_browser": "calculation, save, reread, sharing, separate-tab read without editor token, real file download",
+  "export_sha256": "d3488af752e592c83229c617e6ebce74cf9de81fd5f4beb2ea39b2d051b72810",
+  "deployed_application_sha": "f1dcb7286021788750f0c864551982a09714595b",
+  "demo": "https://pendular-gustapaz.starrylinen.chatgpt.site",
+  "keyboard_and_pause": "Arrow key changes angle, native timeline scrub and explicit motion pause verified."
+}
